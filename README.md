@@ -129,21 +129,3 @@ npm run build     # Build for production
 npm run preview   # Preview production build locally
 npm run lint      # Lint code (if configured)
 ```
-
-## 🤝 Contributing
-
-Found a bug or have a feature request? 
-- Open an issue or submit a pull request
-- We welcome all contributions!
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 📧 Support
-
-For questions or support, contact: support@seherapromo.com
-
----
-
-**Made with ❤️ by Sehera Promotional Apparels**

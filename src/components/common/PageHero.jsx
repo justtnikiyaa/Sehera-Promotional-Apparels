@@ -2,7 +2,7 @@
 
 function PageHero({ title, subtitle, image }) {
   return (
-    <section className="relative overflow-hidden bg-hero-brand pt-28 text-white sm:pt-32">
+    <section className="relative overflow-hidden bg-hero-brand pt-24 text-white sm:pt-32">
       <div className="absolute inset-0">
         <img src={image} alt={title} className="h-full w-full object-cover opacity-28" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/96 via-royal-900/78 to-magenta-900/52" />
@@ -10,7 +10,7 @@ function PageHero({ title, subtitle, image }) {
       <div className="absolute -right-16 top-20 h-64 w-64 rounded-full bg-magenta-500/24 blur-3xl" />
       <div className="absolute -left-16 bottom-8 h-64 w-64 rounded-full bg-royal-400/24 blur-3xl" />
 
-      <div className="site-container relative pb-24 lg:pb-28">
+      <div className="site-container relative pb-10 sm:pb-20 lg:pb-28">
         <motion.h1
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}

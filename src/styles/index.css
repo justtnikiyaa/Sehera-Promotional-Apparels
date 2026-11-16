@@ -14,9 +14,8 @@
     --text-muted: #4b5567;
   }
 
-  html,
-  body {
-    overflow-x: hidden;
+  html {
+    scroll-padding-top: 5rem;
   }
 
   body {
@@ -67,8 +66,8 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 @layer components {
@@ -77,7 +76,7 @@ html {
   }
 
   .section-space {
-    @apply py-24 sm:py-32 lg:py-36;
+    @apply py-12 sm:py-20 lg:py-28;
   }
 
   .section-soft {
@@ -113,7 +112,7 @@ html {
   }
 
   .input-base {
-    @apply mt-2 w-full rounded-2xl border border-charcoal-200 bg-white px-4 py-3 text-sm text-charcoal-900 outline-none ring-royal-200 transition duration-300 focus:border-royal-300 focus:ring;
+    @apply mt-2 w-full rounded-2xl border border-charcoal-200 bg-white px-4 py-3 text-base text-charcoal-900 sm:text-sm outline-none ring-royal-200 transition duration-300 focus:border-royal-300 focus:ring;
   }
 
   .content-list {
@@ -160,10 +159,34 @@ html {
 .work-cover span { right: .6rem; bottom: .6rem; padding: .2rem .55rem; font-size: .76rem; }
 .work-card:hover h3 { color: #50348d; }
 .work-filter, .work-control { border: 1px solid #cbc7d6; border-radius: 2rem; background: white; color: #28223b; }
-.work-filter { padding: .5rem .9rem; font-size: .85rem; }
+.work-filter { min-height: 44px; padding: .5rem .9rem; font-size: .85rem; }
 .work-filter[aria-pressed=true] { background: #27213c; border-color: #27213c; color: white; }
 .work-control { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; flex-shrink: 0; }
-.work-dialog { margin: auto; width: min(94vw, 65rem); max-height: 94dvh; overflow: auto; border-radius: 1rem; background: white; color: #292435; }
+.work-dialog { overscroll-behavior: contain; margin: auto; width: min(94vw, 65rem); max-height: 94dvh; overflow: auto; border-radius: 1rem; background: white; color: #292435; }
 .work-dialog::backdrop { background: rgb(12 12 21 / 85%); }
 .work-photo { background: #16151b; }
 .work-photo img { width: 100%; height: min(60dvh, 42rem); object-fit: contain; }
+
+.mobile-navigation {
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (min-width: 380px) and (max-width: 639px) {
+  .order-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 639px) {
+  .work-hero { padding-top: 4rem; }
+  .work-label { line-height: 1.45; }
+  .work-card { min-width: 0; overflow-wrap: break-word; }
+  .work-dialog { width: calc(100% - 1rem); }
+  .work-photo img { height: min(52dvh, 28rem); }
+  .card-base { padding: 1.25rem; }
+  .whatsapp-float {
+    bottom: calc(.75rem + env(safe-area-inset-bottom));
+    right: calc(.75rem + env(safe-area-inset-right));
+  }
+}

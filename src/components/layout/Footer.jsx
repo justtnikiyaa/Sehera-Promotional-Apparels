@@ -71,6 +71,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-charcoal-700 px-4 py-6 text-center text-xs text-slate-500">
+        <a href="#page-top" className="mx-auto mb-2 flex min-h-11 w-fit items-center px-4 text-sm text-white underline">Back to top</a>
         © {new Date().getFullYear()} Sehera Promotional Apparels. All rights reserved.
       </div>
     </footer>

@@ -14,7 +14,7 @@ const featuredOrders = featuredOrderIds.map((id) => galleryItems.find((order) =>
 function Home() {
   return (
     <>
-      <section aria-labelledby="home-orders" className="bg-white pb-12 pt-28 sm:pb-16 sm:pt-32">
+      <section aria-labelledby="home-orders" className="bg-white pb-10 pt-24 sm:pb-16 sm:pt-32">
         <div className="site-container">
           <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -25,14 +25,14 @@ function Home() {
               View all {galleryItems.length} orders <FiArrowUpRight aria-hidden="true" className="ml-2" />
             </Link>
           </div>
-          <div className="grid gap-x-5 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="order-grid grid gap-x-3 gap-y-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {featuredOrders.map((order, index) => (
               <Link key={order.id} to={'/our-work?order=' + order.id} className="work-card">
                 <div className="work-cover">
                   <img src={order.cover} alt="" loading={index < 3 ? 'eager' : 'lazy'} />
                   <span>{order.photos.length} {order.photos.length === 1 ? 'photo' : 'photos'}</span>
                 </div>
-                <h2 className="mt-3 text-xl font-semibold text-charcoal-900">{order.title}</h2>
+                <h2 className="mt-2 text-base font-semibold leading-snug text-charcoal-900 sm:text-xl">{order.title}</h2>
               </Link>
             ))}
           </div>

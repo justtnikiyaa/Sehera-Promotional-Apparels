@@ -40,7 +40,7 @@ function OrderAlbum({ order, onClose }) {
       <div className="flex items-start justify-between gap-4 p-4 sm:p-5">
         <div>
           <p className="work-label">{order.category}</p>
-          <h2 id="album-title" className="mt-1 text-lg font-semibold sm:text-xl">{order.title}</h2>
+          <h2 id="album-title" className="mt-1 text-base font-semibold sm:text-lg sm:text-xl">{order.title}</h2>
         </div>
         <button type="button" onClick={onClose} className="work-control" aria-label="Close album"><FiX /></button>
       </div>
@@ -63,7 +63,7 @@ export default function OurWork() {
   return (
     <>
       <header className="work-hero">
-        <div className="site-container grid items-center gap-8 py-12 lg:grid-cols-2">
+        <div className="site-container grid items-center gap-5 py-6 sm:gap-8 sm:py-12 lg:grid-cols-2">
           <div>
             <p className="work-label text-magenta-200">Sehera Promotional Apparels</p>
             <h1 className="mt-4 text-white">Our work</h1>
@@ -85,7 +85,7 @@ export default function OurWork() {
           </div>
           <span aria-live="polite" className="text-sm text-charcoal-600">{visible.length} orders</span>
         </div>
-        <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="order-grid grid gap-x-3 gap-y-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {visible.map((item) => (
             <Link key={item.id} to={'?order=' + item.id} className="work-card">
               <div className="work-cover">
@@ -93,7 +93,7 @@ export default function OurWork() {
                 <span>{item.photos.length} {item.photos.length === 1 ? 'photo' : 'photos'}</span>
               </div>
               <p className="work-label mt-4 text-royal-700">{item.category}</p>
-              <h3 className="mt-1 text-lg font-semibold text-charcoal-900">{item.title}</h3>
+              <h3 className="mt-1 text-base font-semibold sm:text-lg text-charcoal-900">{item.title}</h3>
             </Link>
           ))}
         </div>

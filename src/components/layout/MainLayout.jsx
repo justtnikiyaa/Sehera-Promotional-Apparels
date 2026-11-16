@@ -6,7 +6,7 @@ import ScrollToTop from './ScrollToTop'
 
 function MainLayout() {
   return (
-    <div className="min-h-screen bg-white text-charcoal-900">
+    <div id="page-top" className="min-h-screen bg-white text-charcoal-900">
       <ScrollToTop />
       <Navbar />
       <main>

@@ -1,26 +1,7 @@
-﻿import { motion } from 'framer-motion'
 import { FiMail, FiMapPin, FiMessageCircle, FiPhone, FiSend, FiShield } from 'react-icons/fi'
 import PageHero from '../components/common/PageHero'
 import Section from '../components/common/Section'
 import { businessLinks } from '../data/siteData'
-
-const revealContainer = {
-  hidden: { opacity: 0, y: 22 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const revealItem = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
-}
 
 function Contact() {
   return (
@@ -36,15 +17,10 @@ function Contact() {
         title="Request Your Apparel Quotation"
         description="Send your order details through WhatsApp or contact us directly by phone or email."
       >
-        <motion.div
-          variants={revealContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+        <div
           className="grid gap-8 xl:grid-cols-[1.05fr,0.95fr]"
         >
-          <motion.form
-            variants={revealItem}
+          <form
             className="card-base space-y-5"
             onSubmit={(event) => {
               event.preventDefault()
@@ -94,7 +70,7 @@ function Contact() {
               </div>
               <div>
                 <label htmlFor="contact-quantity" className="text-sm font-medium text-charcoal-700">Estimated Quantity</label>
-                <input id="contact-quantity" name="quantity" type="text" className="input-base" placeholder="e.g. 100 pieces" />
+                <input id="contact-quantity" name="quantity" type="text" inputMode="numeric" className="input-base" placeholder="e.g. 100" />
               </div>
             </div>
 
@@ -120,9 +96,9 @@ function Contact() {
             <p className="text-xs text-charcoal-500">
               Your details will be added to a WhatsApp message for you to review and send.
             </p>
-          </motion.form>
+          </form>
 
-          <motion.div variants={revealItem} className="space-y-5">
+          <div className="space-y-5">
             <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#128C7E] via-[#25D366] to-[#45d684] p-7 text-white shadow-premium">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/90">Instant Contact</p>
               <h3 className="mt-3 text-2xl font-semibold text-white">Chat on WhatsApp for Quick Support</h3>
@@ -156,8 +132,8 @@ function Contact() {
                 </p>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -166,11 +142,7 @@ function Contact() {
         description="Contact Sehera to discuss high quality T-shirts, caps or promotional wear."
         className="section-soft"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
+        <div
           className="overflow-hidden rounded-3xl bg-gradient-to-r from-charcoal-900 via-royal-900 to-magenta-700 px-7 py-11 text-white shadow-premium sm:px-12"
         >
           <div className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
@@ -195,7 +167,7 @@ function Contact() {
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </Section>
     </>
   )

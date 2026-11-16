@@ -9,7 +9,7 @@ function Products() {
       <PageHero
         title="Our Product Range"
         subtitle="Sehera Promotional Apparels manufactures high quality T-shirts, caps and promotional wear."
-        image="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1600&q=80"
+        image="/gallery/vidyaloka-college-galle-oba/2.webp"
       />
 
       <Section

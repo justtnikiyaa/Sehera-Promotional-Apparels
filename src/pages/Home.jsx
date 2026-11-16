@@ -1,12 +1,11 @@
 ﻿import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FiCheckCircle, FiClock, FiShield } from 'react-icons/fi'
+import { FiArrowUpRight } from 'react-icons/fi'
 import { highlights, productCategories, services, businessLinks } from '../data/siteData'
 import { galleryItems } from '../data/galleryData'
 import Section from '../components/common/Section'
 import InfoCard from '../components/common/InfoCard'
 import ImageCard from '../components/common/ImageCard'
-import BrandLogo from '../components/common/BrandLogo'
 
 const revealContainer = {
   hidden: { opacity: 0, y: 24 },
@@ -30,118 +29,36 @@ const revealItem = {
   },
 }
 
+const featuredOrderIds = [
+  'foreway-shipping', 'ananda-balika-prefects-guild-202526', 'luv-esence',
+  'agarapatana-plantations-plc', 'world-photography-day-celebration-2024-galle', 'richmond-college-galle-group-of-79',
+]
+const featuredOrders = featuredOrderIds.map((id) => galleryItems.find((order) => order.id === id))
+
 function Home() {
   return (
     <>
-      <section className="relative overflow-hidden pt-32 text-white sm:pt-36">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=2000&q=80"
-            alt="Apparel showcase"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/95 via-charcoal-900/86 to-royal-900/72" />
-          <div className="absolute inset-0 bg-hero-brand opacity-80" />
-        </div>
-
-        <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-magenta-500/24 blur-3xl" />
-        <div className="absolute -left-16 bottom-8 h-72 w-72 rounded-full bg-royal-400/28 blur-3xl" />
-
-        <div className="site-container relative pb-24 lg:pb-28">
-          <div className="grid items-end gap-10 lg:grid-cols-[1.12fr,0.88fr] lg:gap-12">
+      <section aria-labelledby="home-orders" className="bg-white pb-12 pt-28 sm:pb-16 sm:pt-32">
+        <div className="site-container">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55 }}
-              >
-                <BrandLogo size="lg" className="mb-6" showFallbackText={false} />
-              </motion.div>
-
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55 }}
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-magenta-200"
-              >
-                Sehera Promotional Apparels
-              </motion.p>
-              <motion.h1
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, delay: 0.08 }}
-                className="mt-5 max-w-4xl"
-              >
-                High Quality Custom Apparel & Uniform Solutions
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.16 }}
-                className="mt-6 max-w-3xl text-base leading-relaxed text-slate-100 sm:text-lg"
-              >
-                Sehera Promotional Apparels manufactures high quality T-shirts, caps and promotional wear in
-                Maharagama, Sri Lanka.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, delay: 0.24 }}
-                className="mt-9 flex flex-wrap gap-4"
-              >
-                <Link to="/our-work" className="btn-primary">
-                  View Our Work
-                </Link>
-                <a href="https://wa.me/94773214141" target="_blank" rel="noreferrer" className="btn-secondary">
-                  Order via WhatsApp
-                </a>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-9 grid gap-3 sm:grid-cols-3"
-              >
-                <div className="glass-panel rounded-2xl px-4 py-3 text-sm font-medium text-slate-100">
-                  <FiShield className="mb-2 text-magenta-200" /> High quality production
-                </div>
-                <div className="glass-panel rounded-2xl px-4 py-3 text-sm font-medium text-slate-100">
-                  <FiClock className="mb-2 text-magenta-200" /> Maharagama, Sri Lanka
-                </div>
-                <div className="glass-panel rounded-2xl px-4 py-3 text-sm font-medium text-slate-100">
-                  <FiCheckCircle className="mb-2 text-magenta-200" /> T-shirts, caps and promotional wear
-                </div>
-              </motion.div>
+              <p className="work-label text-royal-700">Sehera Promotional Apparels</p>
+              <h1 id="home-orders" className="mt-2 text-charcoal-900">Our completed orders</h1>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="glass-panel overflow-hidden rounded-[2rem] border-white/25 shadow-glow"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=1400&q=80"
-                alt="Custom branded apparel"
-                className="h-72 w-full object-cover sm:h-80"
-              />
-              <div className="grid grid-cols-3 gap-3 border-t border-white/15 px-5 py-4 text-center text-xs font-semibold uppercase tracking-[0.12em] text-slate-100 sm:text-sm">
-                <div>
-                  <p className="text-xl font-semibold text-white">T-shirts</p>
-                  <p className="mt-1 text-slate-300">Made to order</p>
+            <Link to="/our-work" className="btn-outline-dark">
+              View all {galleryItems.length} orders <FiArrowUpRight aria-hidden="true" className="ml-2" />
+            </Link>
+          </div>
+          <div className="grid gap-x-5 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredOrders.map((order, index) => (
+              <Link key={order.id} to={'/our-work?order=' + order.id} className="work-card">
+                <div className="work-cover">
+                  <img src={order.cover} alt="" loading={index < 3 ? 'eager' : 'lazy'} />
+                  <span>{order.photos.length} {order.photos.length === 1 ? 'photo' : 'photos'}</span>
                 </div>
-                <div>
-                  <p className="text-xl font-semibold text-white">Caps</p>
-                  <p className="mt-1 text-slate-300">Promotional wear</p>
-                </div>
-                <div>
-                  <p className="text-xl font-semibold text-white">Maharagama</p>
-                  <p className="mt-1 text-slate-300">Sri Lanka</p>
-                </div>
-              </div>
-            </motion.div>
+                <h2 className="mt-3 text-xl font-semibold text-charcoal-900">{order.title}</h2>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -175,8 +92,9 @@ function Home() {
           </motion.div>
           <motion.div variants={revealItem} className="overflow-hidden rounded-3xl border border-charcoal-100 shadow-soft">
             <img
-              src="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=1200&q=80"
-              alt="Apparel production"
+              src="/gallery/world-photography-day-celebration-2024-galle/2.webp"
+              alt="World Photography Day event shirt with lettering across the back"
+              loading="lazy"
               className="h-full min-h-[300px] w-full object-cover"
             />
           </motion.div>
@@ -297,40 +215,6 @@ function Home() {
         >
           <Link to="/contact" className="btn-outline-dark">
             Contact Sehera
-          </Link>
-        </motion.div>
-      </Section>
-
-      <Section
-        eyebrow="Our Work"
-        title="Completed apparel orders"
-      >
-        <motion.div
-          variants={revealContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="rounded-[2rem] border border-charcoal-100/80 bg-white/80 p-5 shadow-soft backdrop-blur-sm sm:p-7"
-        >
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryItems.slice(0, 6).map((item) => (
-              <motion.div key={item.id} variants={revealItem}>
-                <Link to={'/our-work?order=' + item.id}>
-                  <ImageCard image={item.cover} title={item.title} subtitle={item.photos.length + (item.photos.length === 1 ? ' photo' : ' photos')} />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.45 }}
-          className="mt-8"
-        >
-          <Link to="/our-work" className="btn-outline-dark">
-            View all orders
           </Link>
         </motion.div>
       </Section>

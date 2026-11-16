@@ -9,7 +9,7 @@ function Services() {
       <PageHero
         title="Manufacturing"
         subtitle="Sehera Promotional Apparels manufactures high quality T-shirts, caps and promotional wear."
-        image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80"
+        image="/gallery/world-photography-day-celebration-2024-galle/2.webp"
       />
 
       <Section

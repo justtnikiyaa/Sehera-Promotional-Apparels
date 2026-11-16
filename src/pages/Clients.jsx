@@ -8,7 +8,7 @@ function Clients() {
       <PageHero
         title="For Your Apparel Needs"
         subtitle="Talk to Sehera Promotional Apparels about high quality T-shirts, caps and promotional wear."
-        image="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80"
+        image="/gallery/ananda-balika-prefects-guild-202526/2.webp"
       />
 
       <Section

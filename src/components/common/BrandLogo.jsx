@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import logo from '../../assets/sehera-logo.png'
+
 function BrandLogo({
   size = 'md',
   className = '',
@@ -19,7 +21,7 @@ function BrandLogo({
     <div className={`flex items-center gap-3 ${className}`}>
       {logoLoaded && (
         <img
-          src="/src/assets/sehera-logo.png"
+          src={logo}
           alt="Sehera Promotional Apparels logo"
           className={`${sizeMap[size] ?? sizeMap.md} object-contain`}
           onError={() => setLogoLoaded(false)}

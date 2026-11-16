@@ -7,7 +7,7 @@ function About() {
       <PageHero
         title="About Sehera Promotional Apparels"
         subtitle="Sehera Promotional Apparels is a local business in Maharagama, Sri Lanka, manufacturing high quality T-shirts, caps and promotional wear."
-        image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80"
+        image="/gallery/malwatte-valley-plantations-plc/2.webp"
       />
 
       <Section

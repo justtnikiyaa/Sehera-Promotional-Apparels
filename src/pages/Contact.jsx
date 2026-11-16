@@ -28,7 +28,7 @@ function Contact() {
       <PageHero
         title="Contact Us"
         subtitle="Contact Sehera Promotional Apparels about high quality T-shirts, caps and promotional wear."
-        image="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1600&q=80"
+        image="/gallery/ceylinco-life/2.webp"
       />
 
       <Section

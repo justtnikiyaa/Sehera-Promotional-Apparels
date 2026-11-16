@@ -37,17 +37,17 @@ export const productCategories = [
   {
     name: 'Custom T-shirts',
     description: 'High quality T-shirts made for your promotional and apparel needs.',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80',
+    image: '/gallery/southlands-college-commerce-section/1.webp',
   },
   {
     name: 'Caps',
     description: 'Caps produced for promotional wear and custom apparel orders.',
-    image: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=1200&q=80',
+    image: '/gallery/vidyaloka-college-galle-oba/2.webp',
   },
   {
     name: 'Promotional apparel',
     description: 'High quality promotional wear made to order.',
-    image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1200&q=80',
+    image: '/gallery/luv-esence/1.webp',
   },
 ]
 

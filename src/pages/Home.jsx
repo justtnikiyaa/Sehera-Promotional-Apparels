@@ -302,9 +302,8 @@ function Home() {
       </Section>
 
       <Section
-        eyebrow="Product Range"
-        title="T-shirts, Caps and Promotional Wear"
-        description="Explore the main product types Sehera Promotional Apparels makes. For recent photos, visit our Facebook page."
+        eyebrow="Our Work"
+        title="Completed apparel orders"
       >
         <motion.div
           variants={revealContainer}
@@ -316,7 +315,9 @@ function Home() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryItems.slice(0, 6).map((item) => (
               <motion.div key={item.id} variants={revealItem}>
-                <ImageCard image={item.image} title={item.title} subtitle={item.description} />
+                <Link to={'/our-work?order=' + item.id}>
+                  <ImageCard image={item.cover} title={item.title} subtitle={item.photos.length + (item.photos.length === 1 ? ' photo' : ' photos')} />
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -328,8 +329,8 @@ function Home() {
           transition={{ duration: 0.45 }}
           className="mt-8"
         >
-          <Link to="/products" className="btn-outline-dark">
-            Explore Products
+          <Link to="/our-work" className="btn-outline-dark">
+            View all orders
           </Link>
         </motion.div>
       </Section>

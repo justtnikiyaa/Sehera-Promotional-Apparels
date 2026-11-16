@@ -1,105 +1,104 @@
-﻿import { useMemo, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import PageHero from '../components/common/PageHero'
-import Section from '../components/common/Section'
-import { businessLinks } from '../data/siteData'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { FiArrowUpRight, FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi'
 import { galleryItems } from '../data/galleryData'
 
-function OurWork() {
-  const [activeCategory, setActiveCategory] = useState('All')
+const categories = ['All', ...new Set(galleryItems.map((order) => order.category))]
+const featured = galleryItems.find((order) => order.id === 'foreway-shipping')
 
-  // Categories come directly from galleryData so new categories appear automatically.
-  const categories = useMemo(
-    () => ['All', ...new Set(galleryItems.map((item) => item.category))],
-    []
-  )
+function OrderAlbum({ order, onClose }) {
+  const dialog = useRef(null)
+  const [index, setIndex] = useState(0)
+  const count = order.photos.length
 
-  const filteredItems = useMemo(
-    () =>
-      activeCategory === 'All'
-        ? galleryItems
-        : galleryItems.filter((item) => item.category === activeCategory),
-    [activeCategory]
-  )
+  useEffect(() => {
+    const element = dialog.current
+    const previousOverflow = document.body.style.overflow
+    element.showModal()
+    document.body.style.overflow = 'hidden'
+    return () => {
+      element.close()
+      document.body.style.overflow = previousOverflow
+    }
+  }, [])
+
+  function step(direction) {
+    setIndex((current) => (current + direction + count) % count)
+  }
 
   return (
-    <>
-      <PageHero
-        title="Apparel Showcase"
-        subtitle="A look at the main product categories from Sehera Promotional Apparels: T-shirts, caps and promotional wear."
-        image="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1600&q=80"
-      />
-
-      <Section
-        eyebrow="Product Range"
-        title="Explore the Product Range"
-        description="These sample images illustrate the product categories. Visit our Facebook page for Sehera's latest photos and updates."
-      >
-        <div className="rounded-[2rem] border border-charcoal-100/80 bg-white/80 p-5 shadow-soft backdrop-blur-sm sm:p-7">
-          <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setActiveCategory(category)}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition duration-300 ${
-                    activeCategory === category
-                      ? 'bg-gradient-to-r from-royal-700 to-magenta-500 text-white shadow-premium'
-                      : 'border border-charcoal-200 bg-white text-charcoal-700 hover:-translate-y-0.5 hover:border-royal-200 hover:text-royal-700'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-            <p className="text-sm font-medium text-charcoal-500">
-              Showing {filteredItems.length} of {galleryItems.length} product types
-            </p>
-          </div>
-
-          <motion.div layout className="grid gap-7 sm:grid-cols-2 xl:grid-cols-3">
-            <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => (
-                <motion.article
-                  layout
-                  key={item.id}
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 12 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="group overflow-hidden rounded-3xl border border-charcoal-100/80 bg-gradient-to-b from-white to-slate-50/80 shadow-soft transition duration-300 hover:-translate-y-1.5 hover:border-royal-200/70 hover:shadow-premium"
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/90 via-charcoal-900/45 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-                    <div className="absolute inset-x-0 bottom-0 translate-y-3 p-5 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <p className="inline-flex rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.13em] text-white">
-                        {item.category}
-                      </p>
-                      <h3 className="mt-3 text-lg font-semibold text-white">{item.title}</h3>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <p className="text-sm font-medium text-royal-700">{item.category}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-charcoal-600">{item.description}</p>
-                  </div>
-                </motion.article>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+    <dialog
+      ref={dialog}
+      aria-labelledby="album-title"
+      className="work-dialog"
+      onCancel={(event) => { event.preventDefault(); onClose() }}
+      onKeyDown={(event) => {
+        if (event.key === 'ArrowLeft') step(-1)
+        if (event.key === 'ArrowRight') step(1)
+      }}
+    >
+      <div className="flex items-start justify-between gap-4 p-4 sm:p-5">
+        <div>
+          <p className="work-label">{order.category}</p>
+          <h2 id="album-title" className="mt-1 text-lg font-semibold sm:text-xl">{order.title}</h2>
         </div>
-        <div className="mt-8">
-          <a href={businessLinks.facebook} target="_blank" rel="noreferrer" className="btn-primary">See Sehera on Facebook</a>
-        </div>
-      </Section>
-    </>
+        <button type="button" onClick={onClose} className="work-control" aria-label="Close album"><FiX /></button>
+      </div>
+      <div className="work-photo"><img src={order.photos[index]} alt={order.title + ' — photo ' + (index + 1)} /></div>
+      <div className="flex items-center justify-center gap-5 p-3">
+        {count > 1 && <button type="button" className="work-control" aria-label="Previous photo" onClick={() => step(-1)}><FiChevronLeft /></button>}
+        <span aria-live="polite" className="text-sm tabular-nums">Photo {index + 1} of {count}</span>
+        {count > 1 && <button type="button" className="work-control" aria-label="Next photo" onClick={() => step(1)}><FiChevronRight /></button>}
+      </div>
+    </dialog>
   )
 }
 
-export default OurWork
+export default function OurWork() {
+  const [category, setCategory] = useState('All')
+  const [params, setParams] = useSearchParams()
+  const order = galleryItems.find((item) => item.id === params.get('order'))
+  const visible = category === 'All' ? galleryItems : galleryItems.filter((item) => item.category === category)
+
+  return (
+    <>
+      <header className="work-hero">
+        <div className="site-container grid items-center gap-8 py-12 lg:grid-cols-2">
+          <div>
+            <p className="work-label text-magenta-200">Sehera Promotional Apparels</p>
+            <h1 className="mt-4 text-white">Our work</h1>
+            <p className="mt-5 max-w-md text-slate-200">Explore completed apparel orders for companies, schools and teams. Open an album to see the full set of photos.</p>
+          </div>
+          <Link to={'?order=' + featured.id} className="work-feature">
+            <img src={featured.photos[0]} alt="Foreway Shipping team in blue and yellow jerseys" />
+            <span>{featured.title} <FiArrowUpRight aria-hidden="true" /></span>
+          </Link>
+        </div>
+      </header>
+      <section className="site-container py-12 sm:py-16" aria-labelledby="work-heading">
+        <h2 id="work-heading" className="text-3xl font-semibold">Completed orders</h2>
+        <div className="my-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter orders">
+            {categories.map((name) => (
+              <button type="button" key={name} aria-pressed={name === category} onClick={() => setCategory(name)} className="work-filter">{name}</button>
+            ))}
+          </div>
+          <span aria-live="polite" className="text-sm text-charcoal-600">{visible.length} orders</span>
+        </div>
+        <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
+          {visible.map((item) => (
+            <Link key={item.id} to={'?order=' + item.id} className="work-card">
+              <div className="work-cover">
+                <img src={item.cover} alt="" loading="lazy" />
+                <span>{item.photos.length} {item.photos.length === 1 ? 'photo' : 'photos'}</span>
+              </div>
+              <p className="work-label mt-4 text-royal-700">{item.category}</p>
+              <h3 className="mt-1 text-lg font-semibold text-charcoal-900">{item.title}</h3>
+            </Link>
+          ))}
+        </div>
+      </section>
+      {order && <OrderAlbum key={order.id} order={order} onClose={() => setParams({}, { replace: true })} />}
+    </>
+  )
+}

@@ -1,7 +1,8 @@
 ﻿import { motion } from 'framer-motion'
-import { FiClock, FiMail, FiMapPin, FiMessageCircle, FiPhone, FiSend, FiShield } from 'react-icons/fi'
+import { FiMail, FiMapPin, FiMessageCircle, FiPhone, FiSend, FiShield } from 'react-icons/fi'
 import PageHero from '../components/common/PageHero'
 import Section from '../components/common/Section'
+import { businessLinks } from '../data/siteData'
 
 const revealContainer = {
   hidden: { opacity: 0, y: 22 },
@@ -26,14 +27,14 @@ function Contact() {
     <>
       <PageHero
         title="Contact Us"
-        subtitle="Contact us today to discuss your uniform or promotional apparel requirement. We are ready to provide high quality custom apparel solutions for your organization."
+        subtitle="Contact Sehera Promotional Apparels about high quality T-shirts, caps and promotional wear."
         image="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1600&q=80"
       />
 
       <Section
         eyebrow="Let's Talk"
         title="Request Your Apparel Quotation"
-        description="Contact us today to discuss your uniform or promotional apparel requirement. We are ready to provide high quality custom apparel solutions for your organization."
+        description="Send your order details through WhatsApp or contact us directly by phone or email."
       >
         <motion.div
           variants={revealContainer}
@@ -42,57 +43,72 @@ function Contact() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid gap-8 xl:grid-cols-[1.05fr,0.95fr]"
         >
-          <motion.form variants={revealItem} className="card-base space-y-5">
+          <motion.form
+            variants={revealItem}
+            className="card-base space-y-5"
+            onSubmit={(event) => {
+              event.preventDefault()
+              const details = Object.fromEntries(new FormData(event.currentTarget))
+              const message = [
+                `Hello Sehera Promotional Apparels, my name is ${details.name}.`,
+                details.organization && `Organization: ${details.organization}`,
+                details.phone && `Phone: ${details.phone}`,
+                details.email && `Email: ${details.email}`,
+                `Product: ${details.product}`,
+                details.quantity && `Quantity: ${details.quantity}`,
+                details.project && `Details: ${details.project}`,
+              ].filter(Boolean).join('\n')
+              window.open(`${businessLinks.whatsapp}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer')
+            }}
+          >
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="text-sm font-medium text-charcoal-700">Full Name</label>
-                <input type="text" className="input-base" placeholder="Your full name" />
+                <label htmlFor="contact-name" className="text-sm font-medium text-charcoal-700">Full Name</label>
+                <input id="contact-name" name="name" type="text" className="input-base" placeholder="Your full name" required />
               </div>
               <div>
-                <label className="text-sm font-medium text-charcoal-700">Company / School</label>
-                <input type="text" className="input-base" placeholder="Organization name" />
+                <label htmlFor="contact-organization" className="text-sm font-medium text-charcoal-700">Company / School</label>
+                <input id="contact-organization" name="organization" type="text" className="input-base" placeholder="Organization name" />
               </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="text-sm font-medium text-charcoal-700">Phone / WhatsApp</label>
-                <input type="text" className="input-base" placeholder="+94 7X XXX XXXX" />
+                <label htmlFor="contact-phone" className="text-sm font-medium text-charcoal-700">Phone / WhatsApp</label>
+                <input id="contact-phone" name="phone" type="tel" className="input-base" placeholder="+94 7X XXX XXXX" />
               </div>
               <div>
-                <label className="text-sm font-medium text-charcoal-700">Email</label>
-                <input type="email" className="input-base" placeholder="you@company.com" />
+                <label htmlFor="contact-email" className="text-sm font-medium text-charcoal-700">Email</label>
+                <input id="contact-email" name="email" type="email" className="input-base" placeholder="you@company.com" />
               </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="text-sm font-medium text-charcoal-700">Product Type</label>
-                <select className="input-base">
-                  <option>Custom T-shirts</option>
+                <label htmlFor="contact-product" className="text-sm font-medium text-charcoal-700">Product Type</label>
+                <select id="contact-product" name="product" className="input-base">
+                  <option>T-shirts</option>
                   <option>Caps</option>
-                  <option>Corporate uniforms</option>
-                  <option>School uniforms</option>
                   <option>Promotional apparel</option>
                 </select>
               </div>
               <div>
-                <label className="text-sm font-medium text-charcoal-700">Estimated Quantity</label>
-                <input type="text" className="input-base" placeholder="e.g. 100 pieces" />
+                <label htmlFor="contact-quantity" className="text-sm font-medium text-charcoal-700">Estimated Quantity</label>
+                <input id="contact-quantity" name="quantity" type="text" className="input-base" placeholder="e.g. 100 pieces" />
               </div>
             </div>
 
             <div>
-              <label className="text-sm font-medium text-charcoal-700">Project Details</label>
-              <textarea rows="5" className="input-base" placeholder="Share your requirement, timeline and finishing details." />
+              <label htmlFor="contact-project" className="text-sm font-medium text-charcoal-700">Project Details</label>
+              <textarea id="contact-project" name="project" rows="5" className="input-base" placeholder="Share what you need." />
             </div>
 
             <div className="flex flex-wrap gap-3 pt-1">
-              <button type="button" className="btn-primary">
+              <button type="submit" className="btn-primary">
                 <FiSend className="mr-2" /> Send Inquiry
               </button>
               <a
-                href="https://wa.me/94773214141"
+                href={businessLinks.whatsapp}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-[#25D366]/40 bg-[#25D366]/10 px-6 py-3 text-sm font-semibold text-[#1f9d4b] transition duration-300 hover:-translate-y-0.5 hover:bg-[#25D366]/20"
@@ -102,7 +118,7 @@ function Contact() {
             </div>
 
             <p className="text-xs text-charcoal-500">
-              This is a static frontend form for now. For a faster response, contact us directly on WhatsApp.
+              Your details will be added to a WhatsApp message for you to review and send.
             </p>
           </motion.form>
 
@@ -111,10 +127,10 @@ function Contact() {
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/90">Instant Contact</p>
               <h3 className="mt-3 text-2xl font-semibold text-white">Chat on WhatsApp for Quick Support</h3>
               <p className="mt-3 text-sm text-white/90">
-                Contact us today to discuss your uniform or promotional apparel requirement.
+                Contact us about T-shirts, caps or promotional wear.
               </p>
               <a
-                href="https://wa.me/94773214141"
+                href={businessLinks.whatsapp}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#128C7E] shadow-md transition duration-300 hover:-translate-y-0.5 hover:bg-slate-100"
@@ -132,15 +148,11 @@ function Contact() {
                 </p>
                 <p className="flex items-start gap-2">
                   <FiMail className="mt-0.5 text-royal-600" />
-                  <a href="mailto:seherapromo@gmail.com" className="transition hover:text-royal-700">seherapromo@gmail.com</a>
+                  <a href={`mailto:${businessLinks.email}`} className="transition hover:text-royal-700">{businessLinks.email}</a>
                 </p>
                 <p className="flex items-start gap-2">
                   <FiMapPin className="mt-0.5 text-royal-600" />
-                  <span>No 444, Piliyandala Road, Godigamuwa, Maharagama, Sri Lanka</span>
-                </p>
-                <p className="flex items-start gap-2">
-                  <FiClock className="mt-0.5 text-royal-600" />
-                  <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+                  <span>{businessLinks.address}</span>
                 </p>
               </div>
             </div>
@@ -150,8 +162,8 @@ function Contact() {
 
       <Section
         eyebrow="Request a Quotation"
-        title="Need a Quotation for Custom Apparel?"
-        description="Contact us today to discuss your uniform or promotional apparel requirement. We are ready to provide high quality custom apparel solutions for your organization."
+        title="Need a Quote for T-shirts, Caps or Promotional Wear?"
+        description="Contact Sehera to discuss high quality T-shirts, caps or promotional wear."
         className="section-soft"
       >
         <motion.div
@@ -165,21 +177,20 @@ function Contact() {
             <div>
               <h3 className="text-3xl font-semibold text-white">Request Your Quotation Today</h3>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-200 sm:text-base">
-                We are ready to provide high quality custom apparel solutions for your company, school, sports
-                team or organization.
+                Tell us what kind of T-shirts, caps or promotional wear you are looking for.
               </p>
               <div className="mt-5 space-y-2 text-sm text-slate-100">
-                <p className="flex items-center gap-2"><FiShield /> High quality custom garment manufacturing</p>
-                <p className="flex items-center gap-2"><FiShield /> Reliable production and professional finishing</p>
-                <p className="flex items-center gap-2"><FiShield /> Friendly customer service and support</p>
+                <p className="flex items-center gap-2"><FiShield /> High quality apparel</p>
+                <p className="flex items-center gap-2"><FiShield /> T-shirts and caps</p>
+                <p className="flex items-center gap-2"><FiShield /> Promotional wear</p>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-3 lg:justify-end">
-              <a href="https://wa.me/94773214141" target="_blank" rel="noreferrer" className="btn-primary">
+                <a href={businessLinks.whatsapp} target="_blank" rel="noreferrer" className="btn-primary">
                 Order via WhatsApp
               </a>
-              <a href="mailto:seherapromo@gmail.com" className="btn-secondary">
+              <a href={`mailto:${businessLinks.email}`} className="btn-secondary">
                 Email Us
               </a>
             </div>

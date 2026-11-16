@@ -2,6 +2,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import PageHero from '../components/common/PageHero'
 import Section from '../components/common/Section'
+import { businessLinks } from '../data/siteData'
 import { galleryItems } from '../data/galleryData'
 
 function OurWork() {
@@ -24,15 +25,15 @@ function OurWork() {
   return (
     <>
       <PageHero
-        title="Our Work"
-        subtitle="Selected production highlights showcasing design detail, quality control, and brand alignment across sectors."
+        title="Apparel Showcase"
+        subtitle="A look at the main product categories from Sehera Promotional Apparels: T-shirts, caps and promotional wear."
         image="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1600&q=80"
       />
 
       <Section
-        eyebrow="Case Highlights"
-        title="Projects We are Proud Of"
-        description="From launch merchandise to uniform overhauls, we turn concepts into cohesive apparel systems."
+        eyebrow="Product Range"
+        title="Explore the Product Range"
+        description="These sample images illustrate the product categories. Visit our Facebook page for Sehera's latest photos and updates."
       >
         <div className="rounded-[2rem] border border-charcoal-100/80 bg-white/80 p-5 shadow-soft backdrop-blur-sm sm:p-7">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
@@ -53,7 +54,7 @@ function OurWork() {
               ))}
             </div>
             <p className="text-sm font-medium text-charcoal-500">
-              Showing {filteredItems.length} of {galleryItems.length} projects
+              Showing {filteredItems.length} of {galleryItems.length} product types
             </p>
           </div>
 
@@ -85,13 +86,16 @@ function OurWork() {
                   </div>
 
                   <div className="p-6">
-                    <p className="text-sm font-medium text-royal-700">Client: {item.client}</p>
+                    <p className="text-sm font-medium text-royal-700">{item.category}</p>
                     <p className="mt-2 text-sm leading-relaxed text-charcoal-600">{item.description}</p>
                   </div>
                 </motion.article>
               ))}
             </AnimatePresence>
           </motion.div>
+        </div>
+        <div className="mt-8">
+          <a href={businessLinks.facebook} target="_blank" rel="noreferrer" className="btn-primary">See Sehera on Facebook</a>
         </div>
       </Section>
     </>

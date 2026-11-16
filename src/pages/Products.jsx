@@ -8,17 +8,17 @@ function Products() {
     <>
       <PageHero
         title="Our Product Range"
-        subtitle="We manufacture a range of apparel products including corporate uniforms, custom T-shirts, polo shirts, shorts, bottoms and sportswear, caps, promotional apparel, event T-shirts, staff uniforms and school uniforms."
+        subtitle="Sehera Promotional Apparels manufactures high quality T-shirts, caps and promotional wear."
         image="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1600&q=80"
       />
 
       <Section
         eyebrow="Products"
-        title="Apparel Products We Manufacture"
-        description="We manufacture a range of apparel products including corporate uniforms, custom T-shirts, polo shirts, shorts, bottoms and sportswear, caps, promotional apparel, event T-shirts, staff uniforms and school uniforms."
+        title="T-shirts, Caps and Promotional Wear"
+        description="These are the product types featured on Sehera Promotional Apparels' business page. Contact us to discuss your order."
       >
         <div className="mb-8 rounded-3xl border border-charcoal-100/80 bg-white/80 p-6 shadow-soft">
-          <h3 className="text-xl font-semibold text-charcoal-900">Product Categories</h3>
+          <h3 className="text-xl font-semibold text-charcoal-900">Our main products</h3>
           <ul className="content-list">
             {productCategories.map((item) => (
               <li key={item.name}>{item.name}</li>

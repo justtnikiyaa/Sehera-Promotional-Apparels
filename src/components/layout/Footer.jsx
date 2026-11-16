@@ -1,6 +1,6 @@
 ﻿import { Link } from 'react-router-dom'
 import { FiPhone, FiMail, FiMapPin, FiFacebook } from 'react-icons/fi'
-import { navLinks } from '../../data/siteData'
+import { navLinks, businessLinks } from '../../data/siteData'
 import BrandLogo from '../common/BrandLogo'
 
 function Footer() {
@@ -39,13 +39,13 @@ function Footer() {
             </li>
             <li className="flex items-start gap-2">
               <FiMail className="mt-0.5" />
-              <a href="mailto:seherapromo@gmail.com" className="transition hover:text-white">
-                seherapromo@gmail.com
+              <a href={`mailto:${businessLinks.email}`} className="transition hover:text-white">
+                {businessLinks.email}
               </a>
             </li>
             <li className="flex items-start gap-2">
               <FiMapPin className="mt-0.5" />
-              <span>No 444, Piliyandala Road, Godigamuwa, Maharagama, Sri Lanka</span>
+              <span>{businessLinks.address}</span>
             </li>
           </ul>
         </div>
@@ -53,12 +53,20 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-100">Follow Us</h4>
           <a
-            href="https://www.facebook.com/seherapromo"
+            href={businessLinks.facebook}
             target="_blank"
             rel="noreferrer"
             className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition duration-300 hover:-translate-y-0.5 hover:bg-white/12 hover:text-white"
           >
             <FiFacebook /> Facebook
+          </a>
+          <a
+            href={businessLinks.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition duration-300 hover:-translate-y-0.5 hover:bg-white/12 hover:text-white"
+          >
+            Instagram
           </a>
         </div>
       </div>

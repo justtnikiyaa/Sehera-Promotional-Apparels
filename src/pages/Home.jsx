@@ -1,7 +1,7 @@
 ﻿import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FiCheckCircle, FiClock, FiShield } from 'react-icons/fi'
-import { clientLogos, highlights, productCategories, services } from '../data/siteData'
+import { highlights, productCategories, services, businessLinks } from '../data/siteData'
 import { galleryItems } from '../data/galleryData'
 import Section from '../components/common/Section'
 import InfoCard from '../components/common/InfoCard'
@@ -80,9 +80,8 @@ function Home() {
                 transition={{ duration: 0.7, delay: 0.16 }}
                 className="mt-6 max-w-3xl text-base leading-relaxed text-slate-100 sm:text-lg"
               >
-                We manufacture high quality T-shirts, caps and promotional wear for companies, schools, sports
-                teams and organizations. We provide complete apparel solutions from production to finishing with
-                a focus on quality, reliability and customer satisfaction.
+                Sehera Promotional Apparels manufactures high quality T-shirts, caps and promotional wear in
+                Maharagama, Sri Lanka.
               </motion.p>
 
               <motion.div
@@ -109,10 +108,10 @@ function Home() {
                   <FiShield className="mb-2 text-magenta-200" /> High quality production
                 </div>
                 <div className="glass-panel rounded-2xl px-4 py-3 text-sm font-medium text-slate-100">
-                  <FiClock className="mb-2 text-magenta-200" /> Reliable delivery
+                  <FiClock className="mb-2 text-magenta-200" /> Maharagama, Sri Lanka
                 </div>
                 <div className="glass-panel rounded-2xl px-4 py-3 text-sm font-medium text-slate-100">
-                  <FiCheckCircle className="mb-2 text-magenta-200" /> Professional finishing
+                  <FiCheckCircle className="mb-2 text-magenta-200" /> T-shirts, caps and promotional wear
                 </div>
               </motion.div>
             </div>
@@ -130,16 +129,16 @@ function Home() {
               />
               <div className="grid grid-cols-3 gap-3 border-t border-white/15 px-5 py-4 text-center text-xs font-semibold uppercase tracking-[0.12em] text-slate-100 sm:text-sm">
                 <div>
-                  <p className="text-xl font-semibold text-white">500+</p>
-                  <p className="mt-1 text-slate-300">Projects</p>
+                  <p className="text-xl font-semibold text-white">T-shirts</p>
+                  <p className="mt-1 text-slate-300">Made to order</p>
                 </div>
                 <div>
-                  <p className="text-xl font-semibold text-white">100%</p>
-                  <p className="mt-1 text-slate-300">Custom</p>
+                  <p className="text-xl font-semibold text-white">Caps</p>
+                  <p className="mt-1 text-slate-300">Promotional wear</p>
                 </div>
                 <div>
-                  <p className="text-xl font-semibold text-white">Islandwide</p>
-                  <p className="mt-1 text-slate-300">Delivery</p>
+                  <p className="text-xl font-semibold text-white">Maharagama</p>
+                  <p className="mt-1 text-slate-300">Sri Lanka</p>
                 </div>
               </div>
             </motion.div>
@@ -150,7 +149,7 @@ function Home() {
       <Section
         eyebrow="About Company"
         title="Sehera Promotional Apparels"
-        description="Sehera Promotional Apparels is a Sri Lankan apparel and promotional wear manufacturer specializing in custom T-shirts, corporate uniforms, caps and promotional clothing for companies, schools, events and organizations."
+        description="Sehera Promotional Apparels is a Maharagama based local business manufacturing high quality T-shirts, caps and promotional wear."
         className="section-soft"
       >
         <motion.div
@@ -161,14 +160,12 @@ function Home() {
           className="grid gap-8 md:grid-cols-2"
         >
           <motion.div variants={revealItem} className="card-base">
-            <h3 className="text-xl font-semibold text-charcoal-900">Professional Manufacturing with Reliable Delivery</h3>
+            <h3 className="text-xl font-semibold text-charcoal-900">High Quality Apparel</h3>
             <p className="mt-4 text-charcoal-600">
-              We focus on delivering high quality garments with reliable production, professional finishing and
-              on-time delivery.
+              Sehera Promotional Apparels manufactures T-shirts, caps and promotional wear from Maharagama.
             </p>
             <p className="mt-4 text-charcoal-600">
-              Our goal is to help businesses and organizations represent their brand through quality apparel and
-              uniforms.
+              Contact us to discuss an apparel or promotional wear order.
             </p>
             <div className="mt-6">
               <Link to="/about" className="btn-outline-dark">
@@ -189,7 +186,7 @@ function Home() {
       <Section
         eyebrow="Products Overview"
         title="Custom Apparel Products"
-        description="We manufacture a range of apparel products including corporate uniforms, custom T-shirts, polo shirts, shorts, bottoms and sportswear, caps, promotional apparel, event T-shirts, staff uniforms and school uniforms."
+        description="Our product range includes high quality T-shirts, caps and promotional wear. Contact us to discuss an order."
       >
         <motion.div
           variants={revealContainer}
@@ -220,9 +217,9 @@ function Home() {
       </Section>
 
       <Section
-        eyebrow="Services Overview"
-        title="Complete Custom Apparel Manufacturing Services"
-        description="We provide complete custom apparel manufacturing services including cutting, sewing, embroidery, printing and packing. We handle bulk uniform orders, promotional apparel production and custom garment manufacturing for companies, schools, sports teams and events."
+        eyebrow="What We Make"
+        title="T-shirts, Caps and Promotional Wear"
+        description="We manufacture high quality apparel and promotional wear. Get in touch to discuss the product and quantity you need."
         className="section-soft"
       >
         <motion.div
@@ -254,9 +251,9 @@ function Home() {
       </Section>
 
       <Section
-        eyebrow="Why Choose Us"
-        title="Why Organizations Choose Sehera Promotional Apparels"
-        description="We are committed to reliable service, quality production and long-term client satisfaction."
+        eyebrow="At a Glance"
+        title="Sehera Promotional Apparels"
+        description="A local Maharagama business manufacturing high quality T-shirts, caps and promotional wear."
       >
         <motion.div
           variants={revealContainer}
@@ -274,9 +271,9 @@ function Home() {
       </Section>
 
       <Section
-        eyebrow="Clients Preview"
-        title="Clients Across Sri Lanka"
-        description="We have worked with a variety of companies, schools and organizations across Sri Lanka providing uniforms, promotional apparel and custom garment solutions."
+        eyebrow="Follow Along"
+        title="See Sehera on Facebook and Instagram"
+        description="Visit our social pages for updates, photos and more from Sehera Promotional Apparels."
         className="section-soft"
       >
         <motion.div
@@ -286,17 +283,9 @@ function Home() {
           viewport={{ once: true, amount: 0.2 }}
           className="rounded-[2rem] border border-charcoal-100/80 bg-white/80 p-5 shadow-soft backdrop-blur-sm sm:p-7"
         >
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {clientLogos.slice(0, 6).map((name) => (
-              <motion.div
-                key={name}
-                variants={revealItem}
-                whileHover={{ y: -6 }}
-                className="rounded-2xl border border-charcoal-100 bg-gradient-to-b from-white to-slate-50 px-6 py-6 text-center text-sm font-semibold text-charcoal-700 shadow-sm transition duration-300 hover:border-royal-200 hover:shadow-premium"
-              >
-                {name}
-              </motion.div>
-            ))}
+          <div className="flex flex-wrap gap-4">
+            <a href={businessLinks.facebook} target="_blank" rel="noreferrer" className="btn-outline-dark">Facebook</a>
+            <a href={businessLinks.instagram} target="_blank" rel="noreferrer" className="btn-outline-dark">Instagram</a>
           </div>
         </motion.div>
         <motion.div
@@ -306,16 +295,16 @@ function Home() {
           transition={{ duration: 0.45 }}
           className="mt-8"
         >
-          <Link to="/clients" className="btn-outline-dark">
-            View Clients
+          <Link to="/contact" className="btn-outline-dark">
+            Contact Sehera
           </Link>
         </motion.div>
       </Section>
 
       <Section
-        eyebrow="Gallery Preview"
-        title="Recent Work and Production Highlights"
-        description="View a preview of our custom uniforms and promotional apparel projects."
+        eyebrow="Product Range"
+        title="T-shirts, Caps and Promotional Wear"
+        description="Explore the main product types Sehera Promotional Apparels makes. For recent photos, visit our Facebook page."
       >
         <motion.div
           variants={revealContainer}
@@ -327,7 +316,7 @@ function Home() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryItems.slice(0, 6).map((item) => (
               <motion.div key={item.id} variants={revealItem}>
-                <ImageCard image={item.image} title={item.title} subtitle={`${item.category} | ${item.client}`} />
+                <ImageCard image={item.image} title={item.title} subtitle={item.description} />
               </motion.div>
             ))}
           </div>
@@ -339,8 +328,8 @@ function Home() {
           transition={{ duration: 0.45 }}
           className="mt-8"
         >
-          <Link to="/our-work" className="btn-outline-dark">
-            View Full Gallery
+          <Link to="/products" className="btn-outline-dark">
+            Explore Products
           </Link>
         </motion.div>
       </Section>
@@ -355,10 +344,10 @@ function Home() {
         >
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-magenta-200">Call to Action</p>
           <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-white sm:text-4xl">
-            Ready to Order Premium Custom Apparel for Your Team?
+            Ready to Discuss an Apparel Order?
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-200 sm:text-base">
-            Contact Sehera Promotional Apparels today to discuss your uniform or promotional apparel requirement.
+            Contact Sehera Promotional Apparels about T-shirts, caps or promotional wear.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="https://wa.me/94773214141" target="_blank" rel="noreferrer" className="btn-primary">

@@ -58,9 +58,10 @@ function Navbar() {
           </a>
 
           <button
-            className="inline-flex items-center justify-center rounded-lg p-2 text-white transition hover:bg-white/12 md:hidden"
+            className="inline-flex items-center justify-center rounded-lg bg-white/90 p-2 text-charcoal-900 transition hover:bg-white md:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>

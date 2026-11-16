@@ -1,36 +1,8 @@
-import { FiAward, FiLayers, FiPackage, FiPenTool } from 'react-icons/fi'
-
 export const navLinks = [
   { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
   { label: 'Products', path: '/products' },
-  { label: 'Services', path: '/services' },
   { label: 'Our Work', path: '/our-work' },
-  { label: 'Order Options', path: '/clients' },
   { label: 'Contact', path: '/contact' },
-]
-
-export const highlights = [
-  {
-    title: 'High quality apparel',
-    description: 'Sehera Promotional Apparels manufactures high quality garments.',
-    icon: FiAward,
-  },
-  {
-    title: 'T-shirts',
-    description: 'T-shirts are part of Sehera’s product range.',
-    icon: FiPackage,
-  },
-  {
-    title: 'Caps',
-    description: 'Caps are part of Sehera’s product range.',
-    icon: FiPenTool,
-  },
-  {
-    title: 'Promotional wear',
-    description: 'Promotional wear is part of Sehera’s product range.',
-    icon: FiLayers,
-  },
 ]
 
 export const productCategories = [
@@ -48,24 +20,6 @@ export const productCategories = [
     name: 'Promotional apparel',
     description: 'High quality promotional wear made to order.',
     image: '/gallery/luv-esence/1.webp',
-  },
-]
-
-export const services = [
-  {
-    title: 'T-shirt manufacturing',
-    description: 'High quality T-shirts made by Sehera Promotional Apparels.',
-    icon: FiPenTool,
-  },
-  {
-    title: 'Cap manufacturing',
-    description: 'Caps produced as part of Sehera’s apparel and promotional wear range.',
-    icon: FiPackage,
-  },
-  {
-    title: 'Promotional wear',
-    description: 'High quality promotional wear manufactured by Sehera.',
-    icon: FiLayers,
   },
 ]
 

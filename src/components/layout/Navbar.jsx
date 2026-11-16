@@ -1,13 +1,27 @@
-﻿import { useEffect, useRef, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { useEffect, useRef, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
+import { FiArrowUpRight, FiMenu, FiX } from 'react-icons/fi'
+import logo from '../../assets/sehera-logo.png'
 import { navLinks } from '../../data/siteData'
-import BrandLogo from '../common/BrandLogo'
+import './navbar.css'
 
 function Navbar() {
+  const { pathname } = useLocation()
   const [isOpen, setIsOpen] = useState(false)
+  const [atTop, setAtTop] = useState(() => window.scrollY < 45)
+  const marker = useRef(null)
   const header = useRef(null)
   const toggle = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => setAtTop(entry.isIntersecting))
+    observer.observe(marker.current)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     if (!isOpen) return
@@ -27,83 +41,47 @@ function Navbar() {
     }
   }, [isOpen])
 
+  const overHero = pathname === '/' && atTop && !isOpen
+
   return (
-    <header ref={header} className="fixed inset-x-0 top-0 z-50 border-b border-charcoal-100 bg-white shadow-sm">
-      <nav className="site-container flex h-16 items-center md:h-20 justify-between gap-4">
-        <NavLink to="/" onClick={() => setIsOpen(false)} className="transition duration-300 hover:opacity-95">
-          <BrandLogo size="sm" titleColorClass="text-black" subtitleColorClass="text-black" />
-        </NavLink>
+    <>
+      <span ref={marker} aria-hidden="true" className="sehera-nav-marker" />
+      <header ref={header} className="sehera-header" data-overlay={overHero}>
+        <nav aria-label="Main navigation" className="sehera-nav">
+          <NavLink to="/" className="sehera-nav-brand" aria-label="Sehera home" onClick={() => setIsOpen(false)}>
+            <img src={logo} width="32" height="32" alt="" />
+            <span>Sehera</span>
+          </NavLink>
 
-        <ul className="hidden items-center gap-2 md:flex lg:gap-3">
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <NavLink  
-                to={link.path}
-                className={({ isActive }) =>
-                  `rounded-full px-3 py-1.5 text-sm font-medium transition duration-300 ${
-                    isActive
-                      ? 'bg-royal-50 text-royal-700'
-                      : 'text-black hover:-translate-y-0.5 hover:bg-white/15 hover:text-black'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex items-center gap-2">
-          <a
-            href="https://wa.me/94773214141"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden rounded-full bg-gradient-to-r from-royal-600 to-magenta-500 px-4 py-2 text-sm font-semibold text-white shadow-premium ring-1 ring-white/20 transition duration-300 hover:-translate-y-0.5 hover:from-royal-500 hover:to-magenta-400 hover:shadow-glow lg:inline-flex"
-          >
-            WhatsApp Order
-          </a>
-
-          <button
-            ref={toggle}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-white/90 p-2 text-charcoal-900 transition hover:bg-white md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
-          >
-            {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
-        </div>
-      </nav>
-
-      <div id="mobile-navigation" hidden={!isOpen} className="mobile-navigation bg-white px-5 pb-5 pt-2 md:hidden">
-          <ul className="space-y-2">
-            {navLinks.map((link) => (
-              <li key={link.path}>
-                <NavLink
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium transition duration-300 ${
-                      isActive ? 'bg-royal-600/40 text-black' : 'text-black hover:bg-white/15 hover:text-black'
-                    }`
-                  }
-                >
-                  {link.label}
+          <ul id="site-navigation" className="sehera-nav-links" data-open={isOpen}>
+            {navLinks.map(({ path, label }) => (
+              <li key={path}>
+                <NavLink to={path} end={path === '/'} onClick={() => setIsOpen(false)}>
+                  {label}
                 </NavLink>
               </li>
             ))}
           </ul>
-          <a
-            href="https://wa.me/94773214141"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-royal-600 to-magenta-500 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:from-royal-500 hover:to-magenta-400"
-          >
-            WhatsApp Order
-          </a>
-      </div>
-    </header>
+
+          <div className="sehera-nav-actions">
+            <NavLink to="/contact" className="sehera-nav-quote" onClick={() => setIsOpen(false)}>
+              Get a quote <FiArrowUpRight aria-hidden="true" />
+            </NavLink>
+            <button
+              ref={toggle}
+              type="button"
+              className="sehera-nav-toggle"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              aria-controls="site-navigation"
+              onClick={() => setIsOpen((open) => !open)}
+            >
+              {isOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
+        </nav>
+      </header>
+    </>
   )
 }
 

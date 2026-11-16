@@ -4,6 +4,7 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import { businessLinks } from '../data/siteData'
 import { galleryItems } from '../data/galleryData'
 import Section from '../components/common/Section'
+import HomeHero from '../components/common/HomeHero'
 
 const featuredOrderIds = [
   'foreway-shipping', 'ananda-balika-prefects-guild-202526', 'luv-esence',
@@ -14,12 +15,12 @@ const featuredOrders = featuredOrderIds.map((id) => galleryItems.find((order) =>
 function Home() {
   return (
     <>
-      <section aria-labelledby="home-orders" className="bg-white pb-10 pt-24 sm:pb-16 sm:pt-32">
+      <HomeHero featuredOrders={featuredOrders} />
+      <section aria-labelledby="home-orders" className="bg-white pb-10 pt-10 sm:pb-16 sm:pt-14">
         <div className="site-container">
           <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="work-label text-royal-700">Sehera Promotional Apparels</p>
-              <h1 id="home-orders" className="mt-2 text-charcoal-900">Our completed orders</h1>
+              <h2 id="home-orders" className="text-charcoal-900">Our completed orders</h2>
             </div>
             <Link to="/our-work" className="btn-outline-dark">
               View all {galleryItems.length} orders <FiArrowUpRight aria-hidden="true" className="ml-2" />
@@ -32,7 +33,7 @@ function Home() {
                   <img src={order.cover} alt="" loading={index < 3 ? 'eager' : 'lazy'} />
                   <span>{order.photos.length} {order.photos.length === 1 ? 'photo' : 'photos'}</span>
                 </div>
-                <h2 className="mt-2 text-base font-semibold leading-snug text-charcoal-900 sm:text-xl">{order.title}</h2>
+                <h3 className="mt-2 text-base font-semibold leading-snug text-charcoal-900 sm:text-xl">{order.title}</h3>
               </Link>
             ))}
           </div>

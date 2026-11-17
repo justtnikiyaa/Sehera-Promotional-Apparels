@@ -1,19 +1,7 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FiArrowDown, FiArrowUpRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
-import { galleryItems } from '../../data/galleryData'
+import { FiArrowDown } from 'react-icons/fi'
 import './homeHero.css'
 
-const photoCount = galleryItems.reduce((sum, order) => sum + order.photos.length, 0)
-
-export default function HomeHero({ featuredOrders }) {
-  const [selected, setSelected] = useState(0)
-  const order = featuredOrders[selected]
-
-  function changeOrder(direction) {
-    setSelected((current) => (current + direction + featuredOrders.length) % featuredOrders.length)
-  }
-
+export default function HomeHero() {
   return (
     <section className="campaign-frame" aria-labelledby="campaign-name">
       <div className="campaign">
@@ -27,29 +15,11 @@ export default function HomeHero({ featuredOrders }) {
         </div>
 
         <div className="campaign-bottom">
-          <div className="campaign-intro">
-            <dl className="campaign-stats">
-              <div><dt>Completed orders</dt><dd>{galleryItems.length}</dd></div>
-              <div><dt>Project photos</dt><dd>{photoCount}</dd></div>
-            </dl>
-            <div className="campaign-action">
-              <a href="#home-orders" className="campaign-link">Explore our work <FiArrowDown aria-hidden="true" /></a>
-              <p>Custom T-shirts, caps and promotional wear<br className="campaign-break" /> from Maharagama, Sri Lanka.</p>
-            </div>
+          <p className="campaign-orders"><strong>700+</strong> completed orders</p>
+          <div className="campaign-action">
+            <a href="#home-orders" className="campaign-link">Explore our work <FiArrowDown aria-hidden="true" /></a>
+            <p>Custom T-shirts, caps and promotional wear<br className="campaign-break" /> from Maharagama, Sri Lanka.</p>
           </div>
-
-          <aside className="campaign-album" aria-label="Featured order">
-            <Link to={'/our-work?order=' + order.id} className="campaign-preview">
-              <img src={order.cover} alt="" width="190" height="92" />
-              <span className="campaign-preview-link"><FiArrowUpRight aria-hidden="true" /></span>
-              <span className="campaign-preview-title">{order.title}</span>
-            </Link>
-            <div className="campaign-pager">
-              <span aria-live="polite">{String(selected + 1).padStart(2, '0')} / {String(featuredOrders.length).padStart(2, '0')}</span>
-              <button type="button" onClick={() => changeOrder(-1)} aria-label="Previous featured order"><FiChevronLeft /></button>
-              <button type="button" onClick={() => changeOrder(1)} aria-label="Next featured order"><FiChevronRight /></button>
-            </div>
-          </aside>
         </div>
       </div>
     </section>

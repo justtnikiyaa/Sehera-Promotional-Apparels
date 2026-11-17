@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { FiArrowUpRight, FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi'
+import { FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi'
+import OrderSlideshow from '../components/common/OrderSlideshow'
 import { galleryItems } from '../data/galleryData'
 
 const categories = ['All', ...new Set(galleryItems.map((order) => order.category))]
-const featured = galleryItems.find((order) => order.id === 'foreway-shipping')
 
 function OrderAlbum({ order, onClose }) {
   const dialog = useRef(null)
@@ -67,23 +67,17 @@ export default function OurWork() {
           <div>
             <p className="work-label text-magenta-200">Sehera Promotional Apparels</p>
             <h1 className="mt-4 text-white">Our work</h1>
-            <p className="mt-5 max-w-md text-slate-200">Explore completed apparel orders for companies, schools and teams. Open an album to see the full set of photos.</p>
+            <p className="mt-5 max-w-md text-slate-200">Explore a selection of custom apparel we've made for companies, schools and teams.</p>
           </div>
-          <Link to={'?order=' + featured.id} className="work-feature">
-            <img src={featured.photos[0]} alt="Foreway Shipping team in blue and yellow jerseys" />
-            <span>{featured.title} <FiArrowUpRight aria-hidden="true" /></span>
-          </Link>
+          <OrderSlideshow albumOpen={Boolean(order)} />
         </div>
       </header>
       <section className="site-container py-12 sm:py-16" aria-labelledby="work-heading">
-        <h2 id="work-heading" className="text-3xl font-semibold">Completed orders</h2>
-        <div className="my-6 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter orders">
-            {categories.map((name) => (
-              <button type="button" key={name} aria-pressed={name === category} onClick={() => setCategory(name)} className="work-filter">{name}</button>
-            ))}
-          </div>
-          <span aria-live="polite" className="text-sm text-charcoal-600">{visible.length} orders</span>
+        <h2 id="work-heading" className="text-3xl font-semibold">Order gallery</h2>
+        <div className="my-6 flex flex-wrap gap-2" role="group" aria-label="Filter orders">
+          {categories.map((name) => (
+            <button type="button" key={name} aria-pressed={name === category} onClick={() => setCategory(name)} className="work-filter">{name}</button>
+          ))}
         </div>
         <div className="order-grid grid gap-x-3 gap-y-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {visible.map((item) => (

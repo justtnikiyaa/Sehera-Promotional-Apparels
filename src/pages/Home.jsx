@@ -15,15 +15,15 @@ const featuredOrders = featuredOrderIds.map((id) => galleryItems.find((order) =>
 function Home() {
   return (
     <>
-      <HomeHero featuredOrders={featuredOrders} />
+      <HomeHero />
       <section aria-labelledby="home-orders" className="bg-white pb-10 pt-10 sm:pb-16 sm:pt-14">
         <div className="site-container">
           <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 id="home-orders" className="text-charcoal-900">Our completed orders</h2>
+              <h2 id="home-orders" className="text-charcoal-900">Featured orders</h2>
             </div>
             <Link to="/our-work" className="btn-outline-dark">
-              View all {galleryItems.length} orders <FiArrowUpRight aria-hidden="true" className="ml-2" />
+              Explore the gallery <FiArrowUpRight aria-hidden="true" className="ml-2" />
             </Link>
           </div>
           <div className="order-grid grid gap-x-3 gap-y-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">

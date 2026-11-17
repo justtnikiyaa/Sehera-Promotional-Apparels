@@ -150,10 +150,21 @@
   background: linear-gradient(115deg, #15142a, #292452 68%, #44305d);
 }
 .work-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.work-slideshow { position: relative; min-width: 0; }
 .work-feature, .work-cover { position: relative; display: block; overflow: hidden; border-radius: 1rem; }
+.work-feature { background: #201d38; }
 .work-feature img { width: 100%; height: clamp(13rem, 30vw, 23rem); object-fit: cover; object-position: center 40%; }
 .work-feature span, .work-cover span { position: absolute; background: #171629ed; color: white; border-radius: .5rem; }
-.work-feature span { bottom: .8rem; left: .8rem; display: flex; align-items: center; gap: 1rem; padding: .55rem .85rem; }
+.work-feature span { bottom: .8rem; left: .8rem; max-width: calc(100% - 1.6rem); display: flex; align-items: center; gap: .65rem; padding: .55rem .85rem; line-height: 1.35; }
+.work-feature span svg { flex-shrink: 0; }
+.work-slide-controls { position: absolute; top: .65rem; right: .65rem; display: flex; border-radius: 2rem; background: #171629ed; color: white; }
+.work-slide-controls button { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; }
+.work-slide-controls button:hover { background: #ffffff26; }
+.work-slideshow :focus-visible { outline: 2px solid white; outline-offset: -3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .work-feature img { animation: work-slide-in .4s ease-out; }
+  @keyframes work-slide-in { from { opacity: .4; } to { opacity: 1; } }
+}
 .work-cover { aspect-ratio: 4 / 3; background: #edeaf2; }
 .work-cover img { width: 100%; height: 100%; object-fit: cover; }
 .work-cover span { right: .6rem; bottom: .6rem; padding: .2rem .55rem; font-size: .76rem; }
@@ -163,7 +174,11 @@
 .work-filter[aria-pressed=true] { background: #27213c; border-color: #27213c; color: white; }
 .work-control { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; flex-shrink: 0; }
 .work-dialog { overscroll-behavior: contain; margin: auto; width: min(94vw, 65rem); max-height: 94dvh; overflow: auto; border-radius: 1rem; background: white; color: #292435; }
-.work-dialog::backdrop { background: rgb(12 12 21 / 85%); }
+.work-dialog::backdrop {
+  background: rgb(12 12 21 / 60%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
 .work-photo { background: #16151b; }
 .work-photo img { width: 100%; height: min(60dvh, 42rem); object-fit: contain; }
 

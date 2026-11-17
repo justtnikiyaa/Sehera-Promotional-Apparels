@@ -59,15 +59,9 @@
   right: clamp(22px, 4.2vw, 84px);
   bottom: clamp(20px, 3vw, 48px);
   left: clamp(22px, 4.2vw, 84px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem;
 }
-.campaign-stats { display: flex; gap: clamp(25px, 3.6vw, 64px); margin: 0 0 1.3rem; }
-.campaign-stats div { display: flex; flex-direction: column-reverse; }
-.campaign-stats dd { font: 600 clamp(1.65rem, 3vw, 3.1rem)/1.1 "Sora", sans-serif; letter-spacing: -.065em; }
-.campaign-stats dt { font-size: .78rem; color: #eee6d9; }
+.campaign-orders { margin: 0 0 1.3rem; font-size: .8rem; color: #eee6d9; }
+.campaign-orders strong { display: block; color: #fffaf3; font: 600 clamp(1.65rem, 3vw, 3.1rem)/1.1 "Sora", sans-serif; letter-spacing: -.065em; }
 .campaign-action { display: flex; gap: 1.25rem; align-items: center; }
 .campaign-action p { color: #eee8de; font-size: .82rem; line-height: 1.5; }
 .campaign-link {
@@ -75,43 +69,19 @@
   gap: .9rem; border-radius: 99px; padding: .65rem 1.15rem;
   color: #29251e; background: #fffaf2; font-size: .85rem; font-weight: 600;
 }
-.campaign-album {
-  width: clamp(155px, 16vw, 224px); padding: 5px 5px 0;
-  border-radius: 16px; background: #242420f2; border: 1px solid #ffffff32;
-}
-.campaign-preview { position: relative; overflow: hidden; display: block; border-radius: 11px; }
-.campaign-preview img { width: 100%; height: clamp(83px, 8.4vw, 123px); object-fit: cover; }
-.campaign-preview-title {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 1.4rem .55rem .45rem;
-  background: linear-gradient(transparent, #111c); color: white; font-size: .73rem; font-weight: 600; line-height: 1.3;
-}
-.campaign-preview-link {
-  position: absolute; right: .4rem; top: .4rem; padding: .25rem;
-  border-radius: 50%; color: #fff; background: #161918bd;
-}
-.campaign-pager { display: flex; align-items: center; padding-left: .45rem; }
-.campaign-pager span { margin-right: auto; font-size: .66rem; letter-spacing: .1em; font-variant-numeric: tabular-nums; }
-.campaign-pager button { display: grid; place-items: center; min-width: 44px; min-height: 44px; border-radius: 10px; }
-.campaign-pager button:hover { background: #ffffff18; }
 .campaign :focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 @media (max-width: 767px) {
   .campaign { height: clamp(575px, 83svh, 730px); }
   .campaign-stage h1 { top: 15%; font-size: 21vw; }
   .campaign-shirts { top: 22%; width: 98%; height: 48%; }
-  .campaign-bottom { left: 18px; right: 18px; bottom: 20px; align-items: flex-end; gap: 10px; }
-  .campaign-stats { gap: 16px; margin-bottom: 12px; }
-  .campaign-stats dt { font-size: .66rem; }
+  .campaign-bottom { left: 18px; right: 18px; bottom: 20px; }
+  .campaign-orders { margin-bottom: 12px; }
   .campaign-action { flex-direction: column-reverse; align-items: flex-start; gap: 10px; }
-  .campaign-action p { max-width: 24ch; font-size: .73rem; }
+  .campaign-action p { max-width: 38ch; font-size: .73rem; }
   .campaign-break { display: none; }
-  .campaign-album { width: clamp(108px, 30vw, 160px); flex-shrink: 0; }
-  .campaign-preview img { height: 75px; }
-  .campaign-pager { flex-wrap: wrap; justify-content: space-between; padding: 0; }
-  .campaign-pager span { width: 100%; margin: 4px 0 -3px; text-align: center; }
   .campaign-link { padding-inline: .85rem; }
 }
 @media (max-width: 359px) {
   .campaign-bottom { left: 12px; right: 12px; }
-  .campaign-stats { gap: 10px; }
 }

@@ -66,6 +66,7 @@ function Contact() {
                   <option>T-shirts</option>
                   <option>Caps</option>
                   <option>Promotional apparel</option>
+                  <option>Bottoms &amp; Shorts</option>
                 </select>
               </div>
               <div>

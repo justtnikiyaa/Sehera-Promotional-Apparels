@@ -5,6 +5,7 @@ import { businessLinks } from '../data/siteData'
 import { galleryItems } from '../data/galleryData'
 import Section from '../components/common/Section'
 import HomeHero from '../components/common/HomeHero'
+import CardGrid from '../components/common/CardGrid'
 
 const featuredOrderIds = [
   'foreway-shipping', 'ananda-balika-prefects-guild-202526', 'luv-esence',
@@ -26,7 +27,7 @@ function Home() {
               Explore the gallery <FiArrowUpRight aria-hidden="true" className="ml-2" />
             </Link>
           </div>
-          <div className="order-grid grid gap-x-3 gap-y-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          <CardGrid className="order-grid grid gap-x-3 gap-y-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {featuredOrders.map((order, index) => (
               <Link key={order.id} to={'/our-work?order=' + order.id} className="work-card">
                 <div className="work-cover">
@@ -36,7 +37,7 @@ function Home() {
                 <h3 className="mt-2 text-base font-semibold leading-snug text-charcoal-900 sm:text-xl">{order.title}</h3>
               </Link>
             ))}
-          </div>
+          </CardGrid>
         </div>
       </section>
 

@@ -9,7 +9,8 @@ export const productCategories = [
   {
     name: 'Custom T-shirts',
     description: 'High quality T-shirts made for your promotional and apparel needs.',
-    image: '/gallery/southlands-college-commerce-section/1.webp',
+    image: '/gallery/legends-cricket-league-2022-rajapaksha-central-college-weeraketiya/1.webp',
+    imageAlt: 'Legends Cricket League team wearing matching blue shirts with chest logos',
   },
   {
     name: 'Caps',
@@ -20,6 +21,13 @@ export const productCategories = [
     name: 'Promotional apparel',
     description: 'High quality promotional wear made to order.',
     image: '/gallery/luv-esence/1.webp',
+  },
+  {
+    name: 'Bottoms & Shorts',
+    description: 'Shorts and full-length bottoms for team kits and events.',
+    image: '/gallery/tn-associates/1.webp',
+    imageAlt: 'TN Associates team members wearing shorts and trousers with their team shirts',
+    imagePosition: 'center 72%',
   },
 ]
 
